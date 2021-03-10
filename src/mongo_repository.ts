@@ -11,6 +11,11 @@ export class UserMongoEntity extends UserEntity {
   constructor(userEntity?: UserEntity | User) {
     super();
     if (userEntity) {
+      if (userEntity["id"]) {
+        this.id = (userEntity as UserEntity).id;
+      } else {
+        this.id = new ObjectId().toHexString() as ID;
+      }
       this.username = userEntity.username;
       this.superuser = userEntity.superuser;
       this.password = userEntity.password;
@@ -18,12 +23,12 @@ export class UserMongoEntity extends UserEntity {
     }
   }
 
-  set _id(val: any) {
-    this.id = val;
+  set _id(val: ObjectId) {
+    this.id = val.toHexString() as ID;
   }
 
-  get _id(): any {
-    return this.id;
+  get _id(): ObjectId {
+    return new ObjectId(this.id);
   }
 
 }
@@ -33,6 +38,11 @@ export class RuleMongoEntity extends RuleEntity {
   constructor(ruleEntity?: RuleEntity | Rule) {
     super();
     if (ruleEntity) {
+      if (ruleEntity["id"]) {
+        this.id = (ruleEntity as RuleEntity).id;
+      } else {
+        this.id = new ObjectId().toHexString() as ID;
+      }
       this.value = ruleEntity.value;
       this.type = ruleEntity.type;
       this.acc = ruleEntity.acc;
@@ -161,7 +171,7 @@ export class MosquittoAuthMongoRepository implements MosquittoAuthRepository {
   }
 
   async deleteRuleById(id: ID): Promise<void> {
-    const q: FilterQuery<RuleMongoEntity> = { id: id };
+    const q: FilterQuery<RuleMongoEntity> = { id };
     const r: DeleteWriteOpResultObject =
       await this.aclsCollection.deleteOne(q);
     if (r.deletedCount < 1)  {
