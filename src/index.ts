@@ -25,10 +25,7 @@ async function getDatabase(): Promise<Db> {
 }
 
 export async function getMosquittoAuthMongoRepository(): Promise<MosquittoAuthRepository> {
-  console.log("getMosquittoAuthMongoRepository()");
   await connectDatabase();
   const db: Db = await getDatabase();
   return new MosquittoAuthMongoRepository(db);
 }
-
-console.log("mosquitto-auth-mongo-backend");
