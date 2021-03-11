@@ -6,7 +6,7 @@ const build_1 = require("../build");
 exports.users = [
     new build_1.UserMongoEntity({
         username: "user1",
-        password: mosquitto_auth_manager_1.getPasswordHash("test1"),
+        password: mosquitto_auth_manager_1.getPBKDF2Password("test1"),
         acls: [{
                 acc: mosquitto_auth_manager_1.Acc.READ,
                 topic: "users/r/user1"
@@ -14,19 +14,19 @@ exports.users = [
     }),
     new build_1.UserMongoEntity({
         username: "user2",
-        password: mosquitto_auth_manager_1.getPasswordHash("test2")
+        password: mosquitto_auth_manager_1.getPBKDF2Password("test2")
     }),
     new build_1.UserMongoEntity({
         username: "user3",
-        password: mosquitto_auth_manager_1.getPasswordHash("test3")
+        password: mosquitto_auth_manager_1.getPBKDF2Password("test3")
     }),
     new build_1.UserMongoEntity({
         username: "user4",
-        password: mosquitto_auth_manager_1.getPasswordHash("test4")
+        password: mosquitto_auth_manager_1.getPBKDF2Password("test4")
     }),
     new build_1.UserMongoEntity({
         username: "user5",
-        password: mosquitto_auth_manager_1.getPasswordHash("test5")
+        password: mosquitto_auth_manager_1.getPBKDF2Password("test5")
     })
 ];
 exports.rules = [

@@ -28,7 +28,6 @@ describe("Repository Manager Test", () => {
             yield usersCollection.insertMany(_1_data_1.users);
             yield aclsCollection.deleteMany({});
             yield aclsCollection.insertMany(_1_data_1.rules);
-            console.log({ users: _1_data_1.users });
             const repository = yield build_1.getMosquittoAuthMongoRepository();
             manager = mosquitto_auth_manager_1.getRepositoryManager(repository);
             return;

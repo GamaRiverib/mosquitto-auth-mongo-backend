@@ -1,10 +1,10 @@
-import { Acc, getPasswordHash } from "mosquitto-auth-manager";
+import { Acc, getPBKDF2Password } from "mosquitto-auth-manager";
 import { RuleMongoEntity, UserMongoEntity } from "../build";
 
 export const users: UserMongoEntity[] = [
   new UserMongoEntity({
     username: "user1",
-    password: getPasswordHash("test1"),
+    password: getPBKDF2Password("test1"),
     acls: [{
       acc: Acc.READ,
       topic: "users/r/user1"
@@ -12,19 +12,19 @@ export const users: UserMongoEntity[] = [
   }),
   new UserMongoEntity({
     username: "user2",
-    password: getPasswordHash("test2")
+    password: getPBKDF2Password("test2")
   }),
   new UserMongoEntity({
     username: "user3",
-    password: getPasswordHash("test3")
+    password: getPBKDF2Password("test3")
   }),
   new UserMongoEntity({
     username: "user4",
-    password: getPasswordHash("test4")
+    password: getPBKDF2Password("test4")
   }),
   new UserMongoEntity({
     username: "user5",
-    password: getPasswordHash("test5")
+    password: getPBKDF2Password("test5")
   })
 ];
 
