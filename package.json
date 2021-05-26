@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "mongodb": "3.6.3",
-    "mosquitto-auth-manager": "../mosquitto-auth-manager"
+    "mosquitto-auth-manager": "git+https://github.com/GamaRiverib/mosquitto-auth-manager.git"
   },
   "devDependencies": {
     "@types/chai": "4.2.15",
